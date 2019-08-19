@@ -1,3 +1,18 @@
 <p>
   game works!
 </p>
+
+<div *ngIf = "game$ | async as game">
+    <div *ngIf="game.isActive && game.name === 'HRGame'">
+      <h3>Name = {{game.name}}</h3>
+      <h3>Stages = {{game.stages}}</h3>
+      <h3>Active = {{game.isActive}}</h3>
+    </div>
+
+</div>
+
+
+<button class="local-button-border" type="submit" (click)="this.checkStore()">Check</button>
+<button class="local-button-border" type="submit" (click)="this.scoreGame()">Score</button>
+<button class="local-button-border" type="submit" (click)="this.endGame()">End</button>
+

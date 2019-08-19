@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState, getMyGame } from '../app.state';
-import { GetNewGame } from '../../game/state/';
+import { GetNewGame, ScoreGame, EndGame } from '../../game/state/';
 
 @Component({
   selector: 'app-game',
@@ -18,11 +18,25 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('Game Component loaded');
     this.newGame();
     this.game$ = this.store.pipe(select(getMyGame));
   }
 
-  newGame(){
+  newGame() {
+    this.store.dispatch(new GetNewGame(null));
+  }
+
+  scoreGame() {
+    this.store.dispatch(new ScoreGame(null));
+  }
+
+  endGame() {
+    this.store.dispatch(new EndGame(3));
+  }
+
+  checkStore() {
+    console.log(this.game$);
   }
 
 }
