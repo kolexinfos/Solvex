@@ -13,4 +13,7 @@ export const reducers: ActionReducerMap<AppState> = {
   game: gameStore.reducer
 };
 
+export const effects: Array<any> =  [
+  gameStore.GameEffects
+]
 export const getMyGame = (s: AppState) => s.game;

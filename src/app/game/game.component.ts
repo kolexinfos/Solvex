@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState, getMyGame } from '../app.state';
-import { GetNewGame, ScoreGame, EndGame } from '../../game/state/';
+import { GetNewGame, ScoreGame, EndGame, InitiateTimeHop, TimeHopComplete } from '../../game/state/';
 
 @Component({
   selector: 'app-game',
@@ -33,6 +33,10 @@ export class GameComponent implements OnInit {
 
   endGame() {
     this.store.dispatch(new EndGame(3));
+  }
+
+  timeHop() {
+    this.store.dispatch(new InitiateTimeHop(null));
   }
 
   checkStore() {
